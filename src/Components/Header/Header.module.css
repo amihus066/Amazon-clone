@@ -1,0 +1,200 @@
+/* Header.module.css */
+
+.header__container {
+  background-color: #131921;
+  display: flex;
+  align-items: center;
+  color: white;
+  height: 60px;
+  padding: 0 10px; /* Add some padding to the sides */
+  position: relative; /* For absolute positioning of cart */
+}
+
+.logo__container {
+  display: flex;
+  align-items: center;
+  margin-right: 15px; /* Adjust spacing between logo and search */
+}
+
+.logo__container a {
+  display: flex; /* Make the anchor a flex container */
+  align-items: center; /* Vertically align items */
+  text-decoration: none; /* Remove underline from link */
+  color: white; /* Set link color to white */
+}
+
+.logo__container img {
+  width: 100px; /* Adjust logo size */
+  object-fit: contain; /* Prevents image distortion */
+  margin-right: 10px;
+}
+
+.delivery {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the left */
+  margin-left: 5px;
+}
+
+.delivery p {
+  font-size: 0.7rem; /* Adjust font size */
+  margin: 0; /* Remove default margins */
+  color: #ccc; /* Light grey color */
+}
+
+.delivery span {
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.delivery span svg {
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* Takes up available space */
+  margin-right: 15px;
+}
+
+.search select {
+  background-color: #f3f3f3;
+  border: none;
+  padding: 8px;
+  border-radius: 4px 0 0 4px;
+  width: 60px;
+  cursor: pointer;
+}
+
+.search input {
+  flex-grow: 1; /* input takes up most space */
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
+.search svg {
+  background-color: #febd69;
+  padding: 7px;
+  border-radius: 0 4px 4px 0;
+  color: black;
+  cursor: pointer;
+}
+
+.order__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.order__container a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  border: 1px solid transparent;
+}
+
+.order__container a:hover {
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+.order__container img {
+  height: 20px;
+  margin-right: 5px;
+}
+
+.order__container p {
+  font-size: 12px;
+}
+
+.order__container span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart span {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #f08804;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+/* LowerHeader.module.css */
+
+.lower__container {
+  background-color: #232f3e;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the start of the container */
+  height: 40px;
+  padding: 0 10px; /* Add padding to sides */
+  overflow-x: auto; /* Enable horizontal scrolling if content overflows */
+}
+
+.lower__container ul {
+  list-style: none; /* Remove bullet points from list */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Arrange list items horizontally */
+  align-items: center; /* Vertically align items */
+  white-space: nowrap; /* Prevent list items from wrapping */
+}
+
+.lower__container li {
+  margin-right: 15px; /* Add spacing between list items */
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out; /* Smooth color transition on hover */
+  display: flex; /*to make all align in icon */
+  align-items: center; /*to make all align in icon */
+}
+
+.lower__container li:hover {
+  color: #ddd; /* Lighter color on hover */
+}
+
+.lower__container li svg {
+  margin-right: 5px; /* Spacing between menu icon and "All" text */
+  font-size: 1.2rem; /* Adjust the size of the menu icon */
+}
+
+.lower__container li p {
+  margin: 0; /* Remove default margins from paragraph */
+  font-weight: bold; /* Make the "All" text bold */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .header__container {
+    display: flex;
+    flex-direction: column !important;
+    height: auto;
+  }
+
+  .lower__container ul li :not(:first-child) {
+    display: none;
+  }
+
+  .lower__container li svg {
+    font-size: 1rem; /* Adjust icon size */
+  }
+}
+.language {
+  display: none;
+}

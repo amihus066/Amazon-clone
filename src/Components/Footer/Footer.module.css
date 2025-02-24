@@ -1,0 +1,169 @@
+/* Header.module.css */
+
+.header__container {
+  background-color: #131921;
+  display: flex;
+  align-items: center;
+  color: white;
+  height: 60px;
+  padding: 0 10px; /* Add some padding to the sides */
+  position: relative; /* For absolute positioning of cart */
+}
+
+.logo__container {
+  display: flex;
+  align-items: center;
+  margin-right: 15px; /* Adjust spacing between logo and search */
+}
+
+.logo__container a {
+  display: flex; /* Make the anchor a flex container */
+  align-items: center; /* Vertically align items */
+  text-decoration: none; /* Remove underline from link */
+  color: white; /* Set link color to white */
+}
+
+.logo__container img {
+  width: 100px; /* Adjust logo size */
+  object-fit: contain; /* Prevents image distortion */
+  margin-right: 10px;
+}
+
+.delivery {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the left */
+  margin-left: 5px;
+}
+
+.delivery p {
+  font-size: 0.7rem; /* Adjust font size */
+  margin: 0; /* Remove default margins */
+  color: #ccc; /* Light grey color */
+}
+
+.delivery span {
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.delivery span svg {
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* Takes up available space */
+  margin-right: 15px;
+}
+
+.search select {
+  background-color: #f3f3f3;
+  border: none;
+  padding: 8px;
+  border-radius: 4px 0 0 4px;
+  width: 60px;
+  cursor: pointer;
+}
+
+.search input {
+  flex-grow: 1; /* input takes up most space */
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
+.search svg {
+  background-color: #febd69;
+  padding: 7px;
+  border-radius: 0 4px 4px 0;
+  color: black;
+  cursor: pointer;
+}
+
+.order__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.order__container a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the left */
+}
+
+.order__container a p {
+  margin: 0;
+  font-size: 0.7rem;
+  color: #ccc;
+}
+
+.order__container a span {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.order__container a img {
+  width: 30px; /*flag size*/
+  margin-right: 5px;
+}
+.order__container a select {
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.cart {
+  position: relative; /* relative positioning */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart span {
+  position: absolute; /* absolute positioning */
+  top: -5px; /* to move to top right corner */
+  right: -5px;
+  background-color: #febd69;
+  color: black;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .header__container {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .logo__container {
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .search {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .order__container {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .order__container a {
+    margin: 5px;
+  }
+}
