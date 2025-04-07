@@ -1,0 +1,586 @@
+         
+         
+        steps to follow and some notes and dependencies used for the project
+      **************************************************************************
+                                Amazon-Clone-2025 Projcts
+                                *************************
+                                1. Front End Amazon-Clone-2025
+                               ********************************* 
+
+1.1. Carsoul Componet
+**********************
+istall "npm i react-responsive-carousel"
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+ -import Carsoul COMPONENT FROM react resposive Carsoul from "NPM" and 
+ -import "react-responsive-carousel/lib/styles/carousel.min.css" from npm to implemnts its css property
+ -collect some images from the inetrnet and cive it to the imported carousel moducomponent
+ -   then wrap the images with this carousle component and giv it some attribut properties like bellow
+             
+             <div>
+             <Carsoul infintloop={true} thumbnail={false}....>
+                 {img.map(item)=>{
+                  return  <img src={item}
+                 }}
+             <Carsoul/>
+             </div>
+
+1.2 Catagory component
+
+  -first collecting the images from the internet that we going to use for the category front page in our case it is four category i.e "electronic",""jewelry ,"womens fashion" ,"mens fashion" and we store it on  asimple ".js" file and we gong to map it and display like this
+               
+import React from "react";
+import { datainfo } from "./data"; // this is the .js file we store the images we use
+import CatagoryCard from "./CatagoryCard"; // the child component we use for rendering
+import classes from "./catagor.module.css";
+
+function Catagory() {
+  return (
+    <section className={classes.Catagory__container}>
+      {datainfo?.map((info) => (
+        <CatagoryCard data={info} />
+      ))}
+    </section>
+  );
+}
+
+export default Catagory;
+
+1.3 Product component
+
+  -install first "npm install @mui/material @emotion/react @emotion/styled and
+  -import { Rating } from "@mui/material"; and
+
+  instal  "npm install numeral" a and
+  import CurrencyFormator from "../CurrenceFormator/CurrencyFormator";
+
+  /** and then we have to creat and export component called currency formater to use the curency formato in every component we need like below
+
+               import React from "react";
+               import numeral from "numeral";
+
+             function CurrencyFormator({ amount }) {
+                     /*we pass the amount as a prop not as an arugumnt*/
+                  const formatedPrice = numeral(amount).format("$0,0.00");
+
+                      return <div>{formatedPrice}</div>;
+                    }
+
+                   export default CurrencyFormator;
+
+
+
+  -we have to creat a state to store the data so we use the "useState" we fetch from the fake store application
+  -we use the axiox method to fectch ths date and we use th "useEffect" to fectch the data
+  -we use the fakestroreApi  url to fecth the data i.e "https://fakestoreapi.com/products/"
+  -after fetcthing the data we map on it to render and always it is a good practice to use the index key attribute for effective mapping but it is not obligatory it is the unique identifier of the product, 
+  - we use the third party contributed modules here to use the rating and the trating count as well as for price formating
+       first we creat the structure like bellow
+
+       function ProductCard (){
+return (
+                  <div>
+                           <a>
+                               <img src=">
+                           </a>
+                        <div>
+                            <h3>
+                               {data.title}
+                            </h3>
+
+                          <div>
+                               {rating /the stars}
+                                {rating count}
+
+
+                          </div>
+                            <div>{price}</div>
+                        </div>
+
+                  </div>
+)
+   }
+the third party dependecies we use here is 
+    -on material ui "
+
+1.4 HEAder Routing
+    
+    - to do header rounting we ahve to creat a page that collects every other components taht are displayed on the "App.jsx" to do that we have to creat a Landing page called "Landing.jsx" and import all the other components to this landing page excepet the herader components.
+    - and then creat another component called LayOut that holds evrything under it as children, and we use this layOut page and we wrappe every thing with it incorporating the header component i.e first we have to import the header compnents to this lay out  like this
+
+                             import React from "react";
+                             import Header from "../Header/Header";
+
+                                      function LayOut({ children }) {
+                                        return (
+                                                    <div>
+                                                      <Header />
+                                                        {children}
+                                                    </div>
+                                                 );
+                                                   }
+
+                                        export default LayOut;
+
+- and the we wrapp ever thing with layOut like below
+
+                             import React from "react";
+                            import LayOut from "../../Components/LayOut/LayOut";
+                            import Carsole from "../../Components/Carsole/Carsole";
+                            import Catagory from "../../Components/Catagory/Catagory";
+                             import Product from "../../Components/Product/Product";
+
+                                   function Landing() {
+                                                return (
+                                                        <LayOut>
+                                                           <Carsole />
+                                                           <Catagory />
+                                                           <Product />
+                                                        </LayOut>
+                                                                    );
+                                                               }
+
+                                                    export default Landing;
+
+
+
+
+1.4.1  rounting
+           to do routing we have to install and import react router dom first
+
+           "npm i react-router-dom" and import
+           import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; and the we have to wrap ever thing by this router like bellow
+
+
+           function Routing(){
+            return(
+
+                <Router>
+                   <Routes>
+                       <Route>
+                           <Route path="/"  element={<HOME/>} >
+                       <Route>
+                   <Routes>
+                <Router>
+
+            )}
+           export default Routing
+
+
+- when we do routing alwaya we have to change the a tag by the " <Link>" to stop the page from refreshing/reloading when we click it always and also it helps us keep our state as it is
+
+
+1.5 Category Routing
+********************
+
+         -to do category routing we have to define first the "baseUrl" which is common for all the porducts and it is best practice to keep it on  separet ".js" file like below
+            
+             export const productUrl = "https://fakestoreapi.com/products/"; //base url for all products
+
+                                       //("https://fakestoreapi.com/products/categories");
+
+- and the to get the daynamic rounting i.e is it "jewler,mens cloth,orwomens cloth, or electronics" we have to use the "useParams" hook from react by importing
+
+
+import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import LayOut from "../../Components/LayOut/LayOut/";
+import classes from "./results.module.css";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { productUrl } from "../../Api/endPoint";
+import Product from "../../Components/Product/Product";
+import ProductCard from "../../Components/Product/ProductCard/";
+
+                   function Results() {
+  const [results, setResults] = useState([]);
+  const { categoryName } = useParams();
+  const [isLoading, setIsloading] = useState(false);
+  console.log(categoryName);
+  useEffect(() => {
+    setIsloading(true);
+
+    axios
+      .get(`${productUrl}/products/category/${categoryName}`)
+      .then((res) => {
+        console.log(res);
+        setResults(res.data);
+        setIsloading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsloading(false);
+      });
+  }, [categoryName]);}
+
+1.6 Productdetail
+*****************
+
+import React, { useEffect, useState } from "react";
+import classes from "./productDetail.module.css";
+import LayOut from "../../Components/LayOut/LayOut/";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { productUrl } from "../../Api/endPoint";
+import ProductCard from "../../Components/Product/ProductCard/";
+import Loader from "../../Components/Loader/Loader";
+
+
+function ProductDetail() {
+  const { productId } = useParams();
+  console.log(productId);
+  
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    
+    axios
+      .get(`${productUrl}/products/${productId}`)
+      .then((res) => {
+        console.log(res);
+        setProduct(res.data);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+        
+      });
+  }, [])};
+
+
+
+1.7 Loading Functionality
+*************************
+-we use this Functionality that always when we call api end point fetching there might be some mciro second delay in fetching so to let the user to wait or to hold the user  or to let the user the data is coming 
+-to use this effect we ahve to use react spinner by mporting it from react spiiner
+            "npm install react-spinners --save"
+
+import React from "react";
+import { ClipLoader } from "react-spinners";
+function Loader() {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "50vh",
+      }}
+    >
+      <ClipLoader color="orange" />
+    </div>
+  );
+}
+
+export default Loader;
+
+
+//******* "useReducer and useContext"*************
+**************************************************
+ /////////Example using the  useState Hook//
+
+function App(){
+const [count,setCount]=useState(0)
+
+let increment =()=>{
+  setCount(count+1)
+}
+
+let decrement =()=>{
+  setCount (count-1)
+}
+
+let reset =()=>{
+  setCount (0)
+}
+
+return(
+  <>
+<h1>{count}</h1>
+<button onClick={()=>increment}>increment</button>
+<button onClick={()=>decrement}>decrement</button>
+<button onClick={()=>reset}>reset</button>
+
+</>
+
+)
+
+}
+export default App
+
+
+/////////Example using the  useReducer Hook//
+
+
+function App(){
+
+const [state,dispatch]=useReducer(reduce,initialState,init)
+
+// reducer function
+
+const reduce(state,action)=>{
+
+switch (action.type){
+
+ case "increase":
+   return {count:state.count +1};
+
+case "decrease":
+   return {count:state.count -1};
+
+case "reset":
+return {count: 0};
+ default:
+  return state;
+
+const [state,dispatch]=useReducer(reducer,{count:0})
+
+}
+
+}
+
+return(
+  <>
+<h1>{state.count}</h1>
+<button onClick={()=>dispatch({type:"increment"})}>increment</button>
+<button onClick={()=>dispatch({type:"decrement"})}>decrement</button>
+<button onClick={()=>dispatch({type:"reset"})}>reset</button>
+
+</>
+
+)
+
+}
+export default App
+
+
+1.8 Add to cart Functionality
+
+
+
+
+
+
+
+
+
+
+
+  B.Amazon clone Back end
+  /***********************/
+
+1.we have to introduce authentication to do that wehave to google.com page .
+  -to implement the external Authentication service we have to use the firebase authentication from google service"firebase.google.com"
+
+  -getstatred on the page ..we need to have gmail acct and sign in to that 
+  -after we see the welcom page we have to creat a project on that page , in oure case Amazon clone project 
+  -after a minute it will create our projcet and we hit continue and it will take us to the project page we creatd 
+
+  -on the left side of this project page we have a tab called "Build" under it there will be services we can use to our project, 
+     -Authentication// for sign up sign in
+     -fire store//its data base to store customer orders
+     -functions //it is used for deploying oure back end
+
+ - now to use this service we getstared adding this to our code /react application "</>"
+
+ -it will ask us again to register our App , in our case "amazon clone"
+ - after registration it will give us  some code realated to our created project and we copy all and going to paste in our project vscode 
+      -npm install firebase 
+      - initializing by copy the code and hit continue to the console  pest on the vscode
+-on vscode creat utility and creat firbase.js and pest the code from the firebase
+
+-on the same .js file we have to import
+
+  1-    import firebase from "firebase/compat/app".... this enable us to use        
+                  their authentication functon and also import
+
+
+
+
+  2-   import "firebase/compat/firestore" ...this is used to their          
+                    database (db)
+
+  3-   import "firebase/compat/auth"  this is authntication module
+
+  initialization
+  4. const app=firebase.initializApp(firebaseconfig)
+4.- then export the auth
+           -export const auth-getAuth(app)
+5 export the database
+            export const db=app.firestore()
+
+2. next step go to the fire base page .. under build we have to Enable authentication by clicking the get stater button and choose the sign in method, in uor case we choose the "email" and enable it and save
+
+
+// the group vedio//
+
+next step..
+    **** we have to chechk the "signin" is correct bc it says user already in use
+    now we have the user so we have to let allthe other componts know about it using context
+
+    netx -- going to reducer and creat user on ininia state "null"
+    next go to typy.js creat set_user
+    and reducer creat case 
+
+    next.. -after geting user we set the user on then state and import dataacontext
+           - const =[{user},dipatch]=use contet(dataconxt)
+           -dispatch() for both sign in and creat
+
+           -clg(user)and check if the user state is accepeted after sign in 
+
+next--- loading functionality
+
+   -- defining error and setError on the function and creat div and disply erro on the form
+   -- first creat an error dive at teh bottom after this step
+   -- we have to creat loadind state  const [loading,setloading]=usestate(sign in ,sign up)
+       
+
+netx ---navigation
+    
+    - after the user cerat account or sign in it should navigate to the home page 
+    - import usenavigate()
+    - after the naviation is seccesful and naivgat to the home page the next step is haedre
+
+next ---Header sign in sign out
+
+    -to do that we have to creat a div and put everly logic on the div
+
+    -after we fic the sighnin and showing the name we have to shout he sign out button if there is a signed in customer to do that we have to use the(.signout()) method from the fire base like this after importing the {auth} form fire base
+         <span onClick={() => auth.signOut()}>Sign Out</span>  and this method tell to the fire base this user is signing out...
+
+    -after doing this the sign out functionality doesnt work right away its just telling the fire base the user is signing out is not enough we have to updat our state to do that so to delete the sighnout user from the state, we have to go to the (App.jsx ) and do som adjustment
+
+netxt --- App.jsx
+
+      - to do this we use thew useEffect bec its the side effect , so since this is the user state we have to first import the deat context from the data provider and
+      - we have to import type from the utility b/c we hve updating the state action and then we have to import
+      -import {auth }from utility and we use the the dipatcher to dispatch the state change to the reducer and updat the state
+
+      - to do all this on the useEffcet thereis amthod from the firebase that lets us use every time there is a change it tells fire base the change , so that method is  ( auth.onauthstatechange() ) ,this method always on initial render or after refreshing the page always chek who was the last person signd in and this method give us every time there is a change it will give us the authentchated user i.e who was the last user sighned in but if the user was already signed out , this method cant grab it bec the user alraedy out and the stae is changed to null/
+
+                            /// here we finseh al the authentication part//
+
+                            the next step is seting up the stripe account
+                          ************************************************
+      
+      -now we go to the home page add some items to the cart and hit countinue to chech out it will go to the payment page so now we do the payment page
+      - to do that we need stripe account  --- google stripe.com -- 
+      - we need anfd use the stripe e service on both front end and back end to do that we have to signed up--- hit  start now creat account 
+      -filling all the form and creat account-- and
+      -verify email--
+      -check the page is on test mode
+      -hit developer adn grab th Api key there are two kinds 
+
+      netx step---
+
+       --- after we creat account get the Api key go to VS Code and start Working the Back End 
+
+           
+           
+            //// Back End using  the fire base function///
+      -- go to the fire base account and check on the build->function
+
+  next step-- installing firebase to our projwct
+      
+    -  npm install -g firebase-tools   
+              and check the verios 
+    - firbase --version
+
+next step--- we have to login to the fire base
+
+    -firbase login
+    --firebae init
+    - yes
+    -function: configur a clould...... hit space key to select and enter
+    -use an existing project
+    -finally after enter a finction is created asking us the laguage 
+       -javascript
+    - ESLint? no 
+    -instal all dependecies -yes  after function is installed the next step is
+
+ next step--- go to index.js and clear all the comments and leave only const {onrquest}and const logger
+
+     and  cd function and install below
+             -install expresse, cors, dotenv, stripe 
+
+             -then go to the index page and require all of them
+             - crating the .env and put the secreat key from the stripe and pest it
+            - after aquireing all the abouve we have to intialize
+
+               const app-----etc
+
+
+  next step  runing the function and test by 
+     npm run serve
+
+     - install thuder clinet and check
+     -checking the app.get("/) if succse 
+     -processe the payment by using the post request
+      -- after sending the post request on thunder we get the successe respons then we creat payment entent to the stripe
+
+- after we get the paymentIntent as an object , the main thing we are interted from that payment inetent object is the "clinet sercte"
+   that is the our clients secreta key to make secure payment
+- after we get the paymentIntent object we send it back to stripe the (the clinet secreat key ) as a json respons
+          like this 
+          res.status(201).json({
+            clinentSecreat:paymentIntent.client_secret,
+          })
+- after sendingt this payment intent the payment confimed and complet and then after this we go to the stripe account and chevk the completed transaction on the transaction tap
+- after sending this payment intent we done the function backend and next step back end with out function
+   
+               ////////////////// creating backend without function//////////////////
+
+          doing the same thing above by simple copy and pest the index file and start and check it on the tundr app by sending both get request and the post request 
+
+
+                      NEXT STEP
+    /*************** building the payment page***********************/
+
+    -when we use forms on the payment page we use the form from the stripe we cant use our form
+
+    - so go to "stripe for reat js" on google
+    - we instal the reactjs stripejs and stripe loader
+    -so we use the publick Key from stripe on here on the loader
+         
+         " npm install --save @stripe/react-stripe-js @stripe/stripe-js"
+
+          *** after instalation we go to the Router page and do the following below
+          *************************************************************************
+
+        - after istall import this two file on the router page
+             import {Elements} from '@stripe/react-stripe-js';
+             import {loadStripe} from '@stripe/stripe-js';
+
+        - after importing we have to bring our public key here like this
+            const stripePromise = loadStripe('pk_test_51Qw8qSGIelc13XlJ25lf02BsBHKDyF1ohYGN5YPaALeSqkvKJscTcEkkTJkJ0e46AvsPk4Wb6n8JwWp89UU7I8Ie00jxCstUlX');
+
+        - and the we rapp the payment Component on router with the Element component coming from strupe
+                 <Element  stripe={stripePromise}>
+                    <Payment>
+                 <Element>
+
+Next step --- go to payment page and import these teo hooks from strpie page on the payment page
+
+              import {useStripe, useElements, CardElemnt} from '@stripe/react-stripe-js';
+               -after importing it we call the two hooks like these
+                    const stripe = useStripe();
+                    const elements = useElements();
+
+      - then we call the CardElemnt on the hook and use it at the bottom of the pament page inside the form like below
+
+                        <div>
+                            <form action="">
+                                <CardElement />// this is the smart car we use to charge and pay
+                            </form>
+                        </div>
+
+ - creat handle errror function on the cadr to get error and put it on use state                       
+- then creat use state to display the error made on the card and set error on the function
+
+ **** over all the UI (user interface is like this ) so to summerize the processe we did so far 
+
+    -- when we hit pay 
+        -contact the backend first and
+        -took the clinet secreta
+        -and confirm on the front side and then agin and finally go to the data base and store all this orders

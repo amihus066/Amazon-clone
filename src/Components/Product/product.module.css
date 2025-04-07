@@ -1,0 +1,289 @@
+.card__container {
+  width: 250px;
+  /*width: 200px;*/
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card__container:hover .button {
+  display: block;
+}
+.card__container img {
+  padding: 10px;
+  width: 100%;
+  /*height: 200px;*/
+  height: 200px;
+  object-fit: contain;
+}
+
+.button {
+  display: none;
+  padding: 5px 10px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background-color: var(
+    --primary-color
+  ); /*inheriting from the higher level component in this case index.css*/
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 30px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.button:hover {
+  background-color: var(
+    --primary-shade
+  ); /*inheriting from the higher level component in this case index.css*/
+}
+.rating {
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
+}
+.Product_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  /*max-width: 1450px;*/
+  max-width: 1200px;
+  margin: 100px auto 100px auto;
+  gap: 35px 15px;
+  justify-items: center;
+}
+.Product_container section {
+  margin: 0 auto;
+}
+
+/***********/
+
+/****flex styling**/
+
+.product__flexed {
+  box-shadow: none;
+  height: auto;
+  display: flex;
+  /*gap: 5px;*/
+  width: 100%;
+}
+.product__flexed h2 {
+  padding: 20px 0px;
+}
+.product__flexed .button {
+  display: block;
+  position: static;
+  width: 150px;
+  margin-right: 40px;
+}
+.product__flexed {
+  height: 50vh;
+}
+
+.product__flexed img {
+  width: 200px !important;
+  height: auto;
+}
+
+@media screen and(max-width:768px) {
+  .product__flexed {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/*@media (max-width: 768px) {
+  .Product_container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Product_container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px;
+    padding: 10px;
+  }
+}*/
+
+/***tsehay css***/
+
+/*.card__container {
+  width: 250px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  position: relative;
+}
+.card__container:hover .button {
+  display: block;
+}
+.card__container img {
+  padding: 10px;
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+}
+.button {
+  display: none;
+  padding: 5px 10px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 30px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.button:hover {
+  background-color: var(--primary-shade);
+}
+.rating {
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
+}
+.products_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  max-width: 1450px;
+  margin: 100px auto 100px auto;
+  gap: 50px;
+  justify-items: center;
+}
+.products_container section {
+  margin: 0 auto;
+}
+.product__flexed {
+  box-shadow: none;
+  height: auto;
+  display: flex;
+  gap: 50px;
+  width: 100%;
+}
+.product__flexed h3 {
+  padding: 20px 0px;
+}
+.product__flexed .button {
+  display: block;
+  position: static;
+  width: 150px;
+  margin-right: 40px;
+}
+.product__flexed {
+  height: 50vh;
+}
+.product__flexed img {
+  width: 100px !important;
+  height: auto;
+}
+@media screen and (max-width: 768px) {
+  .product__flexed {
+    display: flex;
+    flex-direction: column;
+  }
+}*/
+
+/*tsehay11: 28 AM * {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: #febd69;
+  --primary-shade: #d49644;
+}*/
+
+/* Individual card container */
+/*.card__container {
+  width: 100%; /* Make cards responsive within the grid *
+  max-width: 250px; /* Restrict card width *
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Softer box-shadow for a cleaner look *
+  padding: 15px; /* Add consistent spacing inside the card *
+  color: black;
+  text-decoration: none;
+  position: relative;
+  background-color: #fff; /* Ensure background color for better contrast *
+  border-radius: 8px; /* Add slight rounding for cleaner edges */
+/*transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth hover effect *
+}
+/*.card__container:hover {
+  transform: translateY(-5px); /* Elevate on hover for a modern look */
+/*box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add hover shadow effect *
+}
+
+/* Image inside the card *
+.card__container img {
+  padding: 10px;
+  width: 100%; /* Ensure image fills the card width *
+  height: 150px; /* Slight increase for better balance *
+  object-fit: contain; /* Preserve image aspect ratio *
+  display: block; /* Fix alignment issues *
+  margin: 0 auto; /* Center the image *
+}
+
+/* Button inside the card */
+/*.button {
+  display: none; /* Default hidden *
+  padding: 5px 10px; /* Adjust button padding for better clickability *
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-color); /* Inherit main color *
+  color: white; /* Ensure text is visible *
+  width: 100%; /* Slightly reduce the width to avoid touching edges *
+  margin: 10px 0; /* Center the button *
+  border-radius: 30px; /* Keep rounded corners */
+/*position: absolute;
+  bottom: 0; /* Adjust position for better spacing *
+  left: 0; /* Center the button */
+/*transform: translateX(-50%); /* Fix centering */
+/*transition: background-color 0.3s ease, transform 0.3s ease;*/ /* Smooth hover effect *
+}
+/*.card__container:hover .button {
+  display: block;
+}
+/*.button:hover {
+  background-color: var(--primary-shade); /*Darker shade on hover */
+/*transform: scale(1.05); /* Slight scaling effect on hover *
+}
+
+/* Rating inside the card *
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center align the rating *
+  padding: 10px 0;
+  font-size: 14px; /* Adjust font size for better readability *
+  color: #555; /* Slightly lighter text color *
+}
+
+/* Product container grid *
+.Product_container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Responsive columns *
+  max-width: 1200px; /* Restrict maximum width for better alignment *
+  margin: 50px auto; /* Adjust spacing around the grid *
+  gap: 30px; /* Reduce gap for a tighter layout *
+  justify-items: center; /* Center each card *
+  padding: 0 15px; /* Add padding to prevent cards from touching screen edges *
+}
+
+/* Section inside the product container *
+.Product_container section {
+  margin: 0 auto;
+}*/
